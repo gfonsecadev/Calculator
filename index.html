@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  
+  <link  rel="stylesheet"  href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/45a5aaa029.css" crossorigin="anonymous">
+  <title>Calculadora</title>
+
+  <style type="text/css">
+    
+    body{
+      background: url(images/background_math.png) no-repeat;
+      background-size: cover;
+    }
+
+    .calculadora{
+      padding: 25px 50px ;
+      -webkit-border-radius:15px;
+      -moz-border-radius:15px;
+      -o-border-radius:15px;
+      border-radius: 15px;
+      box-shadow: 10px 25px 10px gray;
+      background: linear-gradient(66deg,black,gray);
+      margin: 25px 0;
+    }
+
+    .container{
+      height:100vh;
+    }
+
+
+    .resultado{
+       
+       text-align: right;
+       height: 80px;
+       margin-bottom: 40px;
+       background: linear-gradient(#679267,#609060);
+       font-size: 1.5em;
+       border:1px solid black;
+
+    }
+
+    .btn{
+      height:80px ;
+      width:87.5px ; 
+      margin: 5px;
+      -webkit-border-radius:5px;
+      -moz-border-radius:5px;
+      -o-border-radius:5px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.5);
+      font-weight: 300;
+      background: linear-gradient(gray,black);
+      font-size: 1.5em;
+      color: white;
+      text-shadow: 1px 1px 1px white;
+    }
+
+    .nao_aparecer{
+      box-shadow:none;
+      background: none;
+      flex-grow: none;
+    }
+
+    .clear{
+      width: 185px;
+    }
+
+  </style>
+
+
+
+</head>
+<body>
+
+  <div class="container" >
+    <div class="row">
+    <div class="col d-flex justify-content-center">
+          <div class="calculadora  ">
+            <div class="row">
+              <input id="resultado" type="text" class="form-control resultado" disabled placeholder="0">
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('limpar','limpar')" class="clear btn btn-dark">C</button>
+              <button onclick="calcular('oper','/')" class="btn btn-dark btn btn-dark-dark">/</button>
+              <button onclick="calcular('oper','*')" class="btn btn-dark">x</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('num',7)" class="btn btn-dark">7</button>
+              <button onclick="calcular('num',8)" class="btn btn-dark">8</button>
+              <button onclick="calcular('num',9)" class="btn btn-dark">9</button>
+              <button onclick="calcular('oper','-')" class="btn btn-dark">-</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('num',4)" class="btn btn-dark">4</button>
+              <button onclick="calcular('num',5)" class="btn btn-dark">5</button>
+              <button onclick="calcular('num',6)" class="btn btn-dark">6</button>
+              <button onclick="calcular('oper','+')" class="btn btn-dark">+</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('num',1)" class="btn btn-dark">1</button>
+              <button onclick="calcular('num',2)" class="btn btn-dark">2</button>
+              <button onclick="calcular('num',3)" class="btn btn-dark">3</button>
+              <button onclick="calcular('total','total')" class="btn btn-dark" style="height: 170px;">=</button>
+            </div>
+
+        
+            <div class="row" style="margin-top:-90px;">
+              <button onclick="calcular('num',0)" class="clear btn btn-dark">0</button>
+              <button onclick="calcular('num','.')" class="btn btn-dark">.</button>
+            </div>
+
+        </div>
+      </div>
+  </div>
+  </div>
+ 
+
+<script type="text/javascript">
+
+function calcular(acao,botao){
+  var ultimo=document.getElementById('resultado').value;
+  var letra=ultimo.charAt(parseInt(ultimo.length)-1);
+  console.log(letra);
+
+
+  if(acao==='num'||acao==='oper'){
+    if ((letra!== '*' && letra!== '/' && letra!== '+' && letra!== '-')|| acao=== 'num') {
+       document.getElementById('resultado').value+=botao;}
+    } else if(acao==='total'){
+    document.getElementById('resultado').value=eval(document.getElementById('resultado').value);
+    }else if(acao=== 'limpar'){
+    document.getElementById('resultado').value='';
+    }
+
+}
+
+
+
+</script>
+
+
+
+
+  <script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  crossorigin="anonymous"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"  crossorigin="anonymous"></script>
+  <script  src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/45a5aaa029.js" crossorigin="anonymous"></script>
+</body>
+</html>
